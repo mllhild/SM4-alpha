@@ -1,0 +1,144 @@
+<Region>
+	<Mioya>
+			<Marducane>
+					<Palace>
+						<Events>
+							<PermissionForEntranceDenied>
+								<ClearTextField/>
+								<HideImages/>
+								<SetImage path='/Events/GenericEvents/Images/guard.jpg'/>
+								<AddText>Before you reach your destination you are blocked by a strange guard.</AddText>
+								<BlankLine/>
+								<PersonSpeak person='Strange Guard'>No entrance permitted to the Palace</PersonSpeak>
+							</PermissionForEntranceDenied>
+						</Events>
+					</Palace>
+
+					<Coloseum>
+						<Events>
+							<PermissionForEntranceDenied>
+								<ClearTextField/>
+								<HideImages/>
+								<SetImage path='/Events/GenericEvents/Images/guard.jpg'/>
+								<AddText>Before you reach your destination you are blocked by a strange guard.</AddText>
+								<BlankLine/>
+								<PersonSpeak person='Strange Guard'>No entrance permitted to the Coloseum</PersonSpeak>
+							</PermissionForEntranceDenied>
+						</Events>
+					</Coloseum>
+
+					<FarmsEast>
+						<Events>
+							<PermissionForEntranceDenied>
+								<ClearTextField/>
+								<HideImages/>
+								<SetImage path='/Events/GenericEvents/Images/guard.jpg'/>
+								<AddText>Before you reach your destination you are blocked by a strange guard.</AddText>
+								<BlankLine/>
+								<PersonSpeak person='Strange Guard'>No entrance permitted to the FarmsEast</PersonSpeak>
+							</PermissionForEntranceDenied>
+						</Events>
+					</FarmsEast>
+
+					<FarmsWest>
+						<Events>
+							<PermissionForEntranceDenied>
+								<ClearTextField/>
+								<HideImages/>
+								<SetImage path='/Events/GenericEvents/Images/guard.jpg'/>
+								<AddText>Before you reach your destination you are blocked by a strange guard.</AddText>
+								<BlankLine/>
+								<PersonSpeak person='Strange Guard'>No entrance permitted to the FarmsWest</PersonSpeak>
+							</PermissionForEntranceDenied>
+						</Events>
+					</FarmsWest>
+
+					<SlaveMarket>
+						<Events>
+							<PermissionForEntranceDenied>
+								<ClearTextField/>
+								<HideImages/>
+								<SetImage path='/Events/GenericEvents/Images/guard.jpg'/>
+								<AddText>Before you reach your destination you are blocked by a strange guard.</AddText>
+								<BlankLine/>
+								<PersonSpeak person='Strange Guard'>No entrance permitted to the SlaveMarket</PersonSpeak>
+							</PermissionForEntranceDenied>
+						</Events>
+					</SlaveMarket>
+
+					<SlavePens>
+						<Events>
+							<PermissionForEntranceDenied>
+								<ClearTextField/>
+								<HideImages/>
+								<SetImage path='/Events/GenericEvents/Images/guard.jpg'/>
+								<AddText>Before you reach your destination you are blocked by a strange guard.</AddText>
+								<BlankLine/>
+								<PersonSpeak person='Strange Guard'>No entrance permitted to the SlavePens</PersonSpeak>
+							</PermissionForEntranceDenied>
+						</Events>
+					</SlavePens>
+
+					<Slum>
+						<Events>
+							<PermissionForEntranceDenied>
+								<ClearTextField/>
+								<HideImages/>
+								<SetImage path='/Events/GenericEvents/Images/guard.jpg'/>
+								<AddText>Before you reach your destination you are blocked by a strange guard.</AddText>
+								<BlankLine/>
+								<PersonSpeak person='Strange Guard'>No entrance permitted to the Slum</PersonSpeak>
+							</PermissionForEntranceDenied>
+						</Events>
+					</Slum>
+
+					<TownRuins>
+						<Events>
+							<PermissionForEntranceDenied>
+								<ClearTextField/>
+								<HideImages/>
+								<SetImage path='/Events/GenericEvents/Images/guard.jpg'/>
+								<AddText>Before you reach your destination you are blocked by a strange guard.</AddText>
+								<BlankLine/>
+								<PersonSpeak person='Strange Guard'>No entrance permitted to the TownRuins</PersonSpeak>
+							</PermissionForEntranceDenied>
+						</Events>
+					</TownRuins>
+
+					<TownCenter>
+						<Events>
+							<PermissionForEntranceDenied>
+								<ClearTextField/>
+								<HideImages/>
+								<SetImage path='/Events/GenericEvents/Images/guard.jpg'/>
+								<AddText>Before you reach your destination you are blocked by a strange guard.</AddText>
+								<BlankLine/>
+								<PersonSpeak person='Strange Guard'>No entrance permitted to the TownCenter</PersonSpeak>
+							</PermissionForEntranceDenied>
+						</Events>
+					</TownCenter>
+					<Forest>
+						
+					</Forest>
+
+					<Lake>
+						<Events>
+							
+						</Events>
+					</Lake>
+
+					<LocationIndependent>
+						<Events>
+							<NoLolsGiven>
+								<ClearTextField/>
+								<HideImages/>
+								<SetImage path='/Events/GenericEvents/Images/guard.jpg' fill='true'/>
+								<AddText>This events depends not from a Location.</AddText>
+								<BlankLine/>
+								<PersonSpeak person='Strange Guard'>You still musnt enter.</PersonSpeak>
+							</NoLolsGiven>
+						</Events>
+					</LocationIndependent>
+			</Marducane>
+	</Mioya>
+</Region>
