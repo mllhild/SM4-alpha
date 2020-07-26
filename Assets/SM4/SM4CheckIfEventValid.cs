@@ -6,10 +6,9 @@ using UnityEngine;
 public class SM4CheckIfEventValid : MonoBehaviour
 {
     public SM4SlaveMaker slaveMaker = new SM4SlaveMaker();
-    //TODO: Make Map/Hashtable of Slave to ID for faster lookup.
     public List<SM4Slave> listOfSlaves = new List<SM4Slave>();
     public List<SM4Character> listOfNpcs = new List<SM4Character>();
-    
+
     public static SM4CheckIfEventValid instance = null;
     private void Awake()
     {
@@ -17,10 +16,10 @@ public class SM4CheckIfEventValid : MonoBehaviour
         {
             instance = this;
         }
-        else if(instance != null)
+        else if (instance != null)
         {
             ErrorLogger.LogErrorInFile("Error in " + this.name);
-            Destroy(gameObject);   
+            Destroy(gameObject);
         }
     }
 
@@ -29,193 +28,145 @@ public class SM4CheckIfEventValid : MonoBehaviour
         foreach (var attribute in sm4Event.attributes)
             if (!CheckAttribute(attribute.Key, attribute.Value))
                 return false;
-        
+
         return true;
     }
-    
+
     // Example: <if gender = '2+'>
     // key = "gender"
     // value = "2+"
     public bool CheckAttribute(string key, string value)
-     {
-         bool checkIsTrue = true;
-
-         string[] keyParts = key.Split('-');
-         //bool greaterThan = value.EndsWith("+");
-         //bool lesserThan = value.EndsWith("-");
-         
-         
-         switch (keyParts[0])
-         {
-             case "sm":
-                return CheckAttributeSM(keyParts, value);
-             case "slave":
-                 //CheckAttributeSlave(keyParts, value, checkIsTrue);
-                 break;
-             case "npc":
-                 //CheckAttributeNPC(keyParts, value, checkIsTrue);
-                 break;
-             case "event":
-                 //CheckAttributeEvent(keyParts, value, checkIsTrue);
-                 break;
-             case "item":
-                 //CheckAttributeItem(keyParts, value, checkIsTrue);
-                 break;
-             default:
-                 ErrorLogger.LogErrorInFile("Key not recognized: " + key);
-                 break;
-         }
-         
-         
-         return checkIsTrue;
-     }
-
-     private bool CheckAttributeSM(string[] keyParts, string value)
-     {
-         switch (keyParts[1])
-         {
-             case "supervise":
-                 return slaveMaker.generalSM.supervise == true;
-             case "stats":
-                 return CheckAttributeSMstats(keyParts, value);
-             default:
-                 ErrorLogger.LogErrorInFile("Key not recognized: " + keyParts.ToString());
-                return false;
-         }
-         
-     }
-
-     private bool CheckAttributeSMstats(string[] keyParts, string value)
-     {
-         switch (keyParts[3])
-         {
-             case "agility":
-                 return CheckAttributeSMstatsAgility(keyParts, value);
-             default:
-                 ErrorLogger.LogErrorInFile("Key not recognized: " + keyParts.ToString());
-                return false;
-         }
-     }
-
-     private bool CheckAttributeSMstatsAgility(string[] keyParts, string value)
-     {
-         var valueComparison = new ComparisonValue(value);
-         switch (keyParts[4])
-         {
-             case "current":
-                return valueComparison.CompareToInt((int)slaveMaker.stats.agility.current);
-             case "last":
-                return valueComparison.CompareToInt((int)slaveMaker.stats.agility.last);
-             case "max":
-                return valueComparison.CompareToInt((int)slaveMaker.stats.agility.max);
-            case "min":
-                return valueComparison.CompareToInt((int)slaveMaker.stats.agility.min);
-            case "start":
-                return valueComparison.CompareToInt((int)slaveMaker.stats.agility.start);
-            case "modifier":
-                return valueComparison.CompareToInt((int)slaveMaker.stats.agility.modifier);
-            default:
-                ErrorLogger.LogErrorInFile("Key not recognized: " + keyParts.ToString());
-                return false;
-         }
-     }
-     
-     private void CheckAttributeSMstatsblowjob(string[] keyParts, string value, bool checkIsTrue)
-     {
-         bool greaterThan = value.EndsWith("+");
-         bool lesserThan = value.EndsWith("-");
-         int numValue = Int32.Parse(value.Remove(value.Length - 1, 1));
-         switch (keyParts[4])
-         {
-             case "current":
-                 if (greaterThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.current >= numValue;
-                 else if (lesserThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.current <= numValue;
-                 else
-                     checkIsTrue = (int) slaveMaker.stats.blowjob.current == numValue;
-                 break;
-             case "last":
-                 if (greaterThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.last >= numValue;
-                 else if (lesserThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.last <= numValue;
-                 else
-                     checkIsTrue = (int) slaveMaker.stats.blowjob.last == numValue;
-                 break;
-             case "max":
-                 if (greaterThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.max >= numValue;
-                 else if (lesserThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.max <= numValue;
-                 else
-                     checkIsTrue = (int) slaveMaker.stats.blowjob.max == numValue;
-                 break;
-             case "min":
-                 if (greaterThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.min >= numValue;
-                 else if (lesserThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.min <= numValue;
-                 else
-                     checkIsTrue = (int) slaveMaker.stats.blowjob.min == numValue;
-                 break;
-             case "start":
-                 if (greaterThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.start >= numValue;
-                 else if (lesserThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.start <= numValue;
-                 else
-                     checkIsTrue = (int) slaveMaker.stats.blowjob.start == numValue;
-                 break;
-             case "modifier":
-                 if (greaterThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.modifier >= numValue;
-                 else if (lesserThan)
-                     checkIsTrue = slaveMaker.stats.blowjob.modifier <= numValue;
-                 else
-                     checkIsTrue = (int) slaveMaker.stats.blowjob.modifier == numValue;
-                 break;
-             default:
-                 ErrorLogger.LogErrorInFile("Key not recognized: " + keyParts.ToString());
-                 break;
-         }
-     }
-
-    public class ComparisonValue
     {
-        string rawValue;
-        int numValue;
-        bool isNum;
-        bool greaterThan;
-        bool lesserThan;
-        public ComparisonValue(string value)
+        string[] keyParts = key.Split('-');
+        string restOfKey;
+        object keyItem = null;
+        //Retrieve Key Item
+        switch (keyParts[0])
         {
-            rawValue = value;
-            greaterThan = value.EndsWith("+");
-            lesserThan = value.EndsWith("-");
-            if(greaterThan || lesserThan)
-                isNum = Int32.TryParse(value.Remove(value.Length - 1, 1), out numValue);
-            else
-                isNum = Int32.TryParse(value, out numValue);
+            case "sm":
+                restOfKey = key.Remove(0, keyParts[0].Length + 1);
+                keyItem = this.slaveMaker.GetItemByValue(restOfKey);
+                break;
+            case "slave":
+                SM4Slave slave = this.GetSlaveByID(keyParts[1]);
+                if (slave == null)
+                {
+                    return false;
+                }
+                restOfKey = key.Remove(0, keyParts[0].Length + keyParts[1].Length + 2);
+                keyItem = slave.GetItemByValue(restOfKey);
+                break;
+            case "npc":
+
+                SM4Character npc = this.GetNPCByID(keyParts[1]);
+                if (npc == null)
+                {
+                    return false;
+                }
+                restOfKey = key.Remove(0, keyParts[0].Length + keyParts[1].Length + 2);
+                keyItem = npc.GetItemByValue(restOfKey);
+                break;
+            case "event":
+                //CheckAttributeEvent(keyParts, value, checkIsTrue);
+                break;
+            case "item":
+                //CheckAttributeItem(keyParts, value, checkIsTrue);
+                break;
+            default:
+                ErrorLogger.LogErrorInFile("Key not recognized: " + key);
+                break;
         }
 
-        public bool CompareToInt(int valueToMatch)
+        //If failed to retrieve key, the event is not valid.
+        if (keyItem == null)
         {
-            if (isNum)
-            {
-                if (greaterThan)
-                    return valueToMatch >= numValue;
-                else if (lesserThan)
-                    return valueToMatch <= numValue;
-                else
-                    return valueToMatch == numValue;
-            }
-            //If not a number in the original value, it's never going to compare to a number correctly.
             return false;
         }
-        public bool CompareToString(string valueToMatch)
+        //Compare Key to Value
+        return CompareKeyToValue(keyItem, value);
+    }
+
+    //Gets Slave by ID.  Returns Null on Failure because Unity doesn't handle exceptions performantly.
+    private SM4Slave GetSlaveByID(string ID)
+    {
+        int intID;
+        if (!Int32.TryParse(ID, out intID))
         {
-            return String.Equals(valueToMatch, rawValue);
+            return null;
         }
+
+        foreach (SM4Slave slave in this.listOfSlaves)
+        {
+            if (slave.slaveID == intID)
+            {
+                return slave;
+            }
+        }
+        return null;
+    }
+
+    //Gets NPC by ID.  Returns Null on Failure because Unity doesn't handle exceptions performantly.
+    private SM4Character GetNPCByID(string ID)
+    {
+        int intID;
+        if (!Int32.TryParse(ID, out intID))
+        {
+            return null;
+        }
+
+        foreach (SM4Character npc in this.listOfNpcs)
+        {
+            if (npc.ID == intID)
+            {
+                return npc;
+            }
+        }
+        return null;
+    }
+
+    //Compares Key to Value.  Comparison is based on the Stat comparison available (Bool compares to bool, string compares to string, numbers compare with number compare feature.
+    private static bool CompareKeyToValue(object keyItem, string value)
+    {
+        Type keyType = keyItem.GetType();
+        if (keyType == typeof(string))
+        {
+            return ((string)keyItem).Equals(value, StringComparison.OrdinalIgnoreCase);
+        }
+        if (keyType == typeof(int) || keyType == typeof(float))
+        {
+            int keyValue = Convert.ToInt32(keyItem);
+            int numValue;
+            bool greaterThan = value.EndsWith("+");
+            bool lesserThan = value.EndsWith("-");
+            if (greaterThan || lesserThan)
+            {
+                value = value.Remove(value.Length - 1, 1);
+            }
+            if (!Int32.TryParse(value, out numValue))
+            {
+                return false;
+            }
+            if (greaterThan)
+                return keyValue >= numValue;
+            else if (lesserThan)
+                return keyValue <= numValue;
+            else
+                return keyValue == numValue;
+        }
+        if (keyType == typeof(bool))
+        {
+            if (value.Equals("true", StringComparison.OrdinalIgnoreCase) && (bool)keyItem)
+            {
+                return true;
+            }
+            if (value.Equals("false", StringComparison.OrdinalIgnoreCase) && !(bool)keyItem)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        ErrorLogger.LogErrorInFile("Key Type not recognized: " + keyType);
+        return false;
     }
 }
