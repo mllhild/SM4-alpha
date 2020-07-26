@@ -36,7 +36,7 @@ public class StartNewGameAvatar : MonoBehaviour
 
     public void smAvatarUpdate()
     {
-        GetAvatars(sm.gender.current, sm.raceID);
+        GetAvatars(sm.gender.current, sm.race.raceID);
         LoadNextAvatartImage();
     }
 
