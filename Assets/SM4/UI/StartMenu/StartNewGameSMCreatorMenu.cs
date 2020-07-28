@@ -151,8 +151,8 @@ public class StartNewGameSMCreatorMenu : MonoBehaviour
     public void Start()
     {
         sm.gender.current = 1;
-        sm.raceID = 1;
-        sm.raceName = "Human";
+        sm.race.raceID = 1;
+        sm.race.raceName = "Human";
         UpdateAvatar();
         UpdateGender();
         UpdateReligion(1);
